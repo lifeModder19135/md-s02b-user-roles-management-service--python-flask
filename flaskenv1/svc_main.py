@@ -87,6 +87,9 @@ class User:
     user_role = db.Column(db.String(10))
     datetime_set = db.Column(db.datetime, defualt=datetime.utcnow())
 
+    __init__() =
+
 
 if __name__ == '__main__':
     app.run()
+
