@@ -13,6 +13,15 @@ SVC_INFO = {
     'Environment': 'Development'
 }
 
+ROLES = {
+    'owner': 'OWNER_INVESTOR'
+    'dev': 'DEVELOPER'
+    'admin': 'ADMINISTRATOR'
+    'staff': 'EMPLOYEE'
+    'user': 'BASIC_CUSTOMER_USER'
+    'guest': 'GUEST_USER'
+}
+
 
 @app.route('/')
 def return_info():
@@ -46,19 +55,33 @@ def return_previous_roles():
     return 'Hello World!'
 
 
-@app.route('/getallpossibleroles')
+@app.route('/getallroles')
 def return_all_roles():
     return 'Hello World!'
 
+@app.route('/getallrolesfor/<user_id>')
+def return_all_roles(user_id):
+    return 'Hello 
 
 def change_user_role(user_id, role):
     """service helper method: Change role for the user with user_id to the role provided, or else raise a
-    'SpecifiedChangeNotPossible' exception."""
-
+    'SpecifiedChangeNotPossible' exception.
+    """
     if type(user_id) != int:
         raise TypeError("User ID must be of type int.")
 
 
+def promote_user_role(user_id, role_before):
+    """service helper method: Change role for the user with user_id to the role provided, or else raise a
+    'SpecifiedChangeNotPossible' exception.
+    """
+    
+    
+def demote_user_role(user_id, role_before):
+    """service helper method: Change role for the user with user_id to the role provided, or else raise a
+    'SpecifiedChangeNotPossible' exception.
+    """    
+    
 class RoleChangeEvent:
     """This class represents any events that change the role of any user, such as a new user being assigned his or her
     first role, a user role changing for any reason, or a user being deleted. The role_prior property can be none only
